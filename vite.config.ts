@@ -7,11 +7,12 @@ import path = require("path");
 
 dotenv.config();
 const target = process.env.URBIT_TARGET;
+const base = process.env.URBIT_DESK;
 
 // TODO: change APPNAMEHERE to your desk
 
 export default defineConfig({
-  plugins: [vue(), urbitPlugin({ base: "APPNAMEHERE", target })],
+  plugins: [vue(), urbitPlugin({ base, target })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
