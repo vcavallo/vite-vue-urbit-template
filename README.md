@@ -1,3 +1,12 @@
-# keep-vue
+# Vite/Vue3/Typescript/Tailwind/Urbit template
 
-- Define a .env file
+To install this elsewhere:
+
+```
+npx degit vcavallo/vite-vue-urbit-template your-project-name
+cd your-project-name
+
+npm install
+```
+
+- Define a .env file, copied from env.example
