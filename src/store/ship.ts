@@ -13,6 +13,9 @@ export default {
   },
 
   getters: {
+    agentSubscriptions(state): Array<AgentSubscription> | [] {
+      return state.subscriptions
+    },
   },
 
   mutations: {
@@ -35,6 +38,7 @@ export default {
           console.log("response ", data);
         },
         (subscriptionNumber: number) => {
+          console.log("got subscription number ", subscriptionNumber);
           dispatch("addSubscription", {
             agentName,
             subscriptionNumber,

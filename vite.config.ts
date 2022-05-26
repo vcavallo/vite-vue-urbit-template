@@ -2,14 +2,12 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { urbitPlugin } from "@urbit/vite-plugin-urbit";
 
-import dotenv = require("dotenv");
 import path = require("path");
 
+import dotenv = require("dotenv");
 dotenv.config();
-const target = process.env.URBIT_TARGET;
-const base = process.env.URBIT_DESK;
-
-// TODO: change APPNAMEHERE to your desk
+const target = process.env.VITE_URBIT_TARGET;
+const base = process.env.VITE_URBIT_DESK;
 
 export default defineConfig({
   plugins: [vue(), urbitPlugin({ base, target })],

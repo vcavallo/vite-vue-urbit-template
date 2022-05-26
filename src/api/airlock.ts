@@ -4,14 +4,16 @@ interface onSubNumber {
   (subNumber: number): void;
 }
 
-const desk = process.env.URBIT_DESK;
 
-export function openAirlock(onEvent, onSubNumber: onSubNumber) {
-  urbitAPI.reset(); // First wipe all airlocks
+export function openAirlockTo(
+  agent: string,
+  onEvent,
+  onSubNumber: onSubNumber
+) {
   urbitAPI
     .subscribe({
-      app: desk,
-      path: "/website",
+      app: agent,
+      path: "/keep/website",
       event: (data) => {
         onEvent(data);
       },

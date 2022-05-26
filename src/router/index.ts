@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -18,10 +18,8 @@ const routes: Array<RouteRecordRaw> = [
   //},
 ];
 
-const desk = process.env.URBIT_DESK;
-
 const router = createRouter({
-  history: createWebHistory(`/apps/${ desk }/`), // TODO: not sure this will work on urbit
+  history: createWebHashHistory(),
   routes,
 });
 

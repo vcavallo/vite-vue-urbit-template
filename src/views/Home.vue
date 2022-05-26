@@ -1,4 +1,5 @@
 <template>
+  This is Home.vue
   <Start />
 </template>
 
