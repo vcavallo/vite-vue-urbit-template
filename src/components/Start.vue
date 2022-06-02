@@ -1,6 +1,6 @@
 <template>
   <h1>Hello world</h1>
-  This is Start.vue
+  This is Start.vue. Be sure to open this file and change <pre>const deskname</pre> to the name of your desk.
 </template>
 
 <script lang="ts">
@@ -8,7 +8,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   mounted() {
-    const deskname = "pick" // TODO: change to your desk
+    const deskname = "todo" // TODO: change to your desk
     this.startAirlock(deskname);
   },
   unmounted() {
