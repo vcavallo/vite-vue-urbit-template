@@ -13,7 +13,7 @@ export function openAirlockTo(
   urbitAPI
     .subscribe({
       app: agent,
-      path: "/keep/website",
+      path: "/website",
       event: (data) => {
         onEvent(data);
       },
