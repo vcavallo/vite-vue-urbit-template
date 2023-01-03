@@ -13,8 +13,9 @@ export function openAirlockTo(
   urbitAPI
     .subscribe({
       app: agent,
-      path: "/website",
+      path: "/web-ui", // TODO: set to your endpoint
       event: (data) => {
+        console.log('REMOVEME: gall response ', data)
         onEvent(data);
       },
     })

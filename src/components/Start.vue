@@ -1,29 +1,41 @@
 <template>
   <h1>Hello world</h1>
   This is Start.vue. Be sure to open this file and change <pre>const deskname</pre> to the name of your desk.
+  You'll find tailwind css at <span class="your-class-here">src/index.css</span>.
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { onMounted, onUnmounted, computed } from 'vue';
+import { useStore } from '@/store/store'
+import { ActionTypes } from '@/store/action-types';
+import { GetterTypes } from '@/store/getter-types';
 
-export default defineComponent({
-  mounted() {
-    const deskname = "todo" // TODO: change to your desk
-    this.startAirlock(deskname);
-  },
-  unmounted() {
-    this.closeAirlocks();
-  },
+const store = useStore()
 
-  methods: {
-    startAirlock(deskname) {
-      this.$store.dispatch("ship/openAirlockToAgent", deskname);
-    },
-    closeAirlocks() {
-      this.$store.dispatch("ship/closeAgentAirlocks");
-    },
-  },
+onMounted(() => {
+  // TODO:
+  const deskname = 'parrot'
+  // TODO:
+  startAirlock(deskname)
 })
+
+onUnmounted(() => {
+  // Maybe:
+  // closeAirlock()
+})
+
+const computedThings = computed(() => store.state.exampleThings)
+const fromGetters = computed(() => {
+  return store.getters[GetterTypes.EXAMPLE_WITH_ARG]('arg here');
+})
+
+const startAirlock = (deskname: string) => {
+  store.dispatch(ActionTypes.AIRLOCK_OPEN, deskname)
+}
+
+const closeAirlock = () => {
+  // Maybe you want this.
+}
 </script>
 
 

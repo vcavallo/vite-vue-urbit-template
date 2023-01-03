@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.your-class-here {
+  @apply text-red-400;
+}

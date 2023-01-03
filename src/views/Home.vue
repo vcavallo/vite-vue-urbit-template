@@ -3,14 +3,8 @@
   <Start />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import Start from "@/components/Start.vue";
 
-export default defineComponent({
-  components: {
-    Start
-  }
-})
 </script>
 
