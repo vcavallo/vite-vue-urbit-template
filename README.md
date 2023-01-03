@@ -5,7 +5,7 @@ With typed Vuex store, CompositionAPI and `setup`-style script tags.
 To install this elsewhere:
 
 ```
-npx degit vcavallo/vite-vue-urbit-template your-project-name
+npx degit vcavallo/vite-vue-urbit-template#vue3-typed-store your-project-name
 cd your-project-name
 
 npm install
