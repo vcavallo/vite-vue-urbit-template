@@ -19,6 +19,7 @@ Then:
 - Check out `src/components/Start.vue`
 - There are some example actions, mutations, getters in `src/store/`
 - Make sure to update `src/api/airlock.ts`'s `path` entry to match your desk's
+- Update the history function in `src/router/index.ts`
 implementation
 - `npm run serve`
 - Visit the URL that the vite server output shows (probably `localhost:3000`)
