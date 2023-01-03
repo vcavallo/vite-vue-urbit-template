@@ -1,5 +1,16 @@
 # Vite/Vue3/Typescript/Tailwind/Urbit template
 
+Find a version of this template with:
+
+- Typed Vuex store
+- Vue3 `setup` components
+- Composition API
+
+On the
+[vue3-typed-store](https://github.com/vcavallo/vite-vue-urbit-template/tree/vue3-typed-store)
+branch.
+
+
 To install this elsewhere:
 
 ```
