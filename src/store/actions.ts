@@ -6,6 +6,7 @@ import { ActionTypes } from "./action-types";
 import { MutationTypes } from "./mutation-types";
 
 import * as T from '@/types'
+import * as L from '@/types/loading-types'
 
 import airlock from "@/api";
 
@@ -29,6 +30,28 @@ export interface Actions {
     { commit }: AugmentedActionContext,
     payload: string
   ): void;
+
+  [ActionTypes.LOADING_STATE_RESET](
+    { commit }: AugmentedActionContext,
+    payload: L.UIElement
+  ): void;
+  [ActionTypes.INITIAL_SET](
+    { commit }: AugmentedActionContext,
+    payload: L.UIElement
+  ): void;
+  [ActionTypes.LOADING_SET](
+    { commit }: AugmentedActionContext,
+    payload: L.UIElement
+  ): void;
+  [ActionTypes.SUCCESS_SET](
+    { commit }: AugmentedActionContext,
+    payload: L.UIElement
+  ): void;
+  [ActionTypes.ERROR_SET](
+    { commit }: AugmentedActionContext,
+    payload: L.UIElement
+  ): void;
+
   // Add more here.
 }
 
@@ -61,6 +84,48 @@ export const actions: ActionTree<State, State> & Actions = {
     console.log('dispatching EXAMPLE action...')
     console.log('getters ', getters) // Access to getters
     commit(MutationTypes.EXAMPLE, 'test')
+  },
+
+  [ActionTypes.INITIAL_SET](
+    { commit },
+    payload: L.UIElement
+  ) {
+    const currentState: L.LoaderState = L.loaderStates.initial
+    commit(MutationTypes.LOADING_STATE_SET, { uiElement: payload, currentState })
+  },
+
+  [ActionTypes.LOADING_SET](
+    { commit },
+    payload: L.UIElement
+  ) {
+    const currentState: L.LoaderState = L.loaderStates.loading
+    commit(MutationTypes.LOADING_STATE_SET, { uiElement: payload, currentState })
+  },
+
+  [ActionTypes.SUCCESS_SET](
+    { commit, dispatch },
+    payload: L.UIElement
+  ) {
+    const currentState: L.LoaderState = L.loaderStates.success
+    commit(MutationTypes.LOADING_STATE_SET, { uiElement: payload, currentState })
+    dispatch(ActionTypes.LOADING_STATE_RESET, payload)
+  },
+
+  [ActionTypes.ERROR_SET](
+    { commit },
+    payload: L.UIElement
+  ) {
+    const currentState: L.LoaderState = L.loaderStates.error
+    commit(MutationTypes.LOADING_STATE_SET, { uiElement: payload, currentState })
+  },
+
+  [ActionTypes.LOADING_STATE_RESET](
+    ctx,
+    payload: L.UIElement
+  ) {
+    setTimeout(() => {
+      ctx.dispatch(ActionTypes.INITIAL_SET, payload)
+    }, 3000)
   },
 
   // Add more here
