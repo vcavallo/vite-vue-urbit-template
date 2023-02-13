@@ -7,6 +7,7 @@ import { MutationTypes } from "./mutation-types";
 
 import * as T from '@/types'
 import * as L from '@/types/loading-types'
+import * as R from "@/api/types/my-response"
 
 import airlock from "@/api";
 
@@ -62,13 +63,14 @@ export const actions: ActionTree<State, State> & Actions = {
       deskName,
 
       // Main all-responses-handler
-      (data: T.GallResponse) => {
+      (data) => {
         if (T.IsResponseOne(data)) {
           dispatch(ActionTypes.EXAMPLE, data.test.thing as string);
         }
-        // if (T.IsResponseTwo(data)) {
-        //   dispatch(ActionTypes.EXAMPLE, data.testTwo.thing as string);
-        // }
+        if (R.IsThingResponse(data)) {
+          // Do something for this particular response
+          // dispatch(ActionTypes.EXAMPLE, data.testTwo.thing as string);
+        }
       },
 
       (subscriptionNumber: number) => {

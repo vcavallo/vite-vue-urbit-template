@@ -10,11 +10,13 @@ import { useStore } from '@/store/store'
 import { ActionTypes } from '@/store/action-types';
 import { GetterTypes } from '@/store/getter-types';
 
+import { Pokes, Scries } from "@/api/myAppAPI"
+
 const store = useStore()
 
 onMounted(() => {
   // TODO:
-  const deskname = 'parrot'
+  const deskname = 'my-app'
   // TODO:
   startAirlock(deskname)
 })
@@ -28,6 +30,13 @@ const computedThings = computed(() => store.state.exampleThings)
 const fromGetters = computed(() => {
   return store.getters[GetterTypes.EXAMPLE_WITH_ARG]('arg here');
 })
+
+const somePoke = () => {
+  return Pokes.SomePoke('here is a string')
+}
+const someScry = () => {
+  return Scries.Thing()
+}
 
 const startAirlock = (deskname: string) => {
   store.dispatch(ActionTypes.AIRLOCK_OPEN, deskname)
