@@ -4,11 +4,12 @@ import { State } from "./state";
 import * as T from "@/types";
 import * as L from "@/loading-types";
 import { sigShip } from "@/helpers"
+import * as MR from "@/api/types/my-response";
 
 export type Mutations<S = State> = {
   [MutationTypes.EXAMPLE](
     state: S,
-    payload: string
+    payload: T.ExampleResponseOne
   ): void;
 
   [MutationTypes.LOADING_STATE_SET](
@@ -22,8 +23,9 @@ export type Mutations<S = State> = {
 export const mutations: MutationTree<State> & Mutations = {
   [MutationTypes.EXAMPLE](
     state,
-    payload: string
+    payload: Parameters<Mutations[MutationTypes.EXAMPLE]>[1]
   ) {
+    // payload will be of type T.ExampleResponseOne
     // update state
     // state.somethign = payload
   },
